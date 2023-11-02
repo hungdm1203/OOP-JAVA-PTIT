@@ -65,16 +65,16 @@ public class MyFrame extends JFrame implements ActionListener{
             selectedType = type.getSelectedItem().toString();
             switch (geometry.getSelectedItem().toString()){
                 case "HCN":
-                    add(new Rectangle(selectedType, selectedColor));
+                    add(new HCN(selectedType, selectedColor));
                     break;
                 case "Vuong":
-                    add(new Square(selectedType, selectedColor));
+                    add(new Vuong(selectedType, selectedColor));
                     break;
                 case "Tron":
-                    add(new Circle(selectedType, selectedColor));
+                    add(new Tron(selectedType, selectedColor));
                     break;
                 case "Da giac":
-                    add(new Polygons(selectedType, selectedColor));
+                    add(new LucGiac(selectedType, selectedColor));
                     break;
             }
             setVisible(true);

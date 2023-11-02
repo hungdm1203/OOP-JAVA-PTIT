@@ -2,11 +2,11 @@ package Bai2;
 
 import java.awt.*;
 
-public class Circle extends Geometry{
+public class Tron extends HinhHoc{
     private final int WIDTH = 450;
     private final int HEIGHT = 450;
 
-    public Circle(String type, Color color){
+    public Tron(String type, Color color){
         super(type, color);
     }
 

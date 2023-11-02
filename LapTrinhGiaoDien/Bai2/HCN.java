@@ -2,11 +2,11 @@ package Bai2;
 
 import java.awt.*;
 
-public class Rectangle extends Geometry{
+public class HCN extends HinhHoc{
     private final int WIDTH = 450;
     private final int HEIGHT = 270;
 
-    public Rectangle(String type, Color color){
+    public HCN(String type, Color color){
         super(type, color);
     }
 

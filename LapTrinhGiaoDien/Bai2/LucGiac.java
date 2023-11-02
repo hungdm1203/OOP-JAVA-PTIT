@@ -2,10 +2,10 @@ package Bai2;
 
 import java.awt.*;
 
-public class Polygons extends Geometry{
+public class LucGiac extends HinhHoc{
     private final int WIDTH = 450;
     private final int HEIGHT = 450;
-    public Polygons(String type, Color color){
+    public LucGiac(String type, Color color){
         super(type, color);
     }
 

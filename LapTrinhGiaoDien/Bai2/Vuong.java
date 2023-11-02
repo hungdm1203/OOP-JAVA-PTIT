@@ -2,11 +2,11 @@ package Bai2;
 
 import java.awt.*;
 
-public class Square extends Geometry{
+public class Vuong extends HinhHoc{
     private final int WIDTH = 450;
     private final int HEIGHT = 450;
 
-    public Square(String type, Color color){
+    public Vuong(String type, Color color){
         super(type, color);
     }
 

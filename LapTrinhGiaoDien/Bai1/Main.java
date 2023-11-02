@@ -13,5 +13,5 @@ public class Main {
         c.setSize(500,400);
         c.setVisible(true);
         c.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }    
+    }   
 }
