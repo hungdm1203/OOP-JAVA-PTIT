@@ -3,6 +3,7 @@ package Bai7_J07057;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
+import Bai7_J07057.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -23,7 +24,7 @@ public class Main {
         mf.setVisible(true);
         mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mf.setSize(600,400);
-
+        
         
     }
     
