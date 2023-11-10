@@ -27,8 +27,8 @@ import java.util.*;
 import javax.swing.table.*;
 
 
-public class Main {
-    public static void main(String[] args) throws IOException {
+// public class Main {
+//     public static void main(String[] args) throws IOException {
         // JFrame frame = new JFrame("JTable from File Example");
         // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // frame.setSize(400, 300);
@@ -91,10 +91,35 @@ public class Main {
         // } catch (IOException e) {
         //     // e.printStackTrace();
         // }
-        ArrayList<Integer> arr=new ArrayList<>();
-        arr.add(1);arr.add(2);arr.add(3);
-        int x=arr.get(1);
-        x=5; 
+//         ArrayList<Integer> arr=new ArrayList<>();
+//         arr.add(1);arr.add(2);arr.add(3);
+//         int x=arr.get(1);
+//         x=5; 
 
+//     }
+/**
+ * Main
+ */
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        int t=scanner.nextInt();
+        while (t-->0) {
+            int n=scanner.nextInt();scanner.nextLine();
+            String s[]=scanner.nextLine().split("\\s+");
+            Deque<Integer> dq=new ArrayDeque<>();
+            for(int i=s.length-1;i>=0;i--){
+                if(s[i].equals("+")||s[i].equals("-")||s[i].equals("*")||s[i].equals("/")){
+                    int x=Integer.valueOf(dq.removeFirst());
+                    int y=Integer.valueOf(dq.removeFirst());
+                    if(s[i].equals("+")) dq.addFirst(x+y);
+                    else if(s[i].equals("-")) dq.addFirst(x-y);
+                    else if(s[i].equals("*")) dq.addFirst(x*y);
+                    else dq.addFirst(x/y);                    
+                } else dq.addFirst(Integer.valueOf(s[i]));
+            }
+            System.out.println(dq.removeFirst());
+        }
     }
 }
