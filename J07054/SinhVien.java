@@ -2,44 +2,44 @@ package J07054;
 
 public class SinhVien implements Comparable<SinhVien> {
     private String id,name;
-    private double a,b,c,tb;
-
+    private double score;
+    private int rank;
     public SinhVien(int id, String name, double a, double b, double c) {
-        this.id = "SV"+String.format("%02d",id);
-        this.name = this.setName(name);
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.tb=this.setTB();
+        this.id = String.format("SV%02d", id);
+        this.name = this.build(name);
+        this.score = Math.round((a*3+b*3+c*2)*100/8)/100.0;
+        this.rank = 1;
     }
 
-    private String setName(String s){
-        String res="",str[]=s.toUpperCase().split("\\s+");
-        for(int i=0;i<str.length;i++){
-            if(i!=str.length-1) res+=str[i].charAt(0)+str[i].substring(1).toLowerCase()+" ";
-            else res+=str[i].charAt(0)+str[i].substring(1).toLowerCase();
+    public String build(String s){
+        String a[]=s.toUpperCase().split("\\s+"), res="";
+        for (String string : a) {
+            res=res+string.charAt(0)+string.toLowerCase().substring(1)+" ";
         }
-        return res;
+        return res.trim();
     }
 
-    private double setTB(){
-        return Math.round((this.a*3+this.b*3+this.c*2)*100/8)/100.0;
+    public void setRank(int n){
+        this.rank=n;
     }
 
-    public int compareTo(SinhVien sv){
-        if(this.tb<sv.tb) return 1;
-        if(this.tb>sv.tb) return -1;
-        return this.id.compareTo(sv.id);
+    public int getRank(){
+        return rank;
     }
-    
 
-    public double getTb() {
-        return tb;
+    public int compareTo(SinhVien s){
+        if(this.score==s.score) return this.id.compareTo(s.id);
+        return -Double.valueOf(this.score).compareTo(Double.valueOf(s.score));
     }
 
     @Override
     public String toString() {
-        return id + " " + name + " " + String.format("%.2f", tb);
-    }   
+        return id + " " + name + " " + String.format("%.2f", score) + " " + rank;
+    }
+
+    public double getScore(){
+        return score;
+    }
+    
     
 }

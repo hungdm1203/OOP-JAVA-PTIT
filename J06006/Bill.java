@@ -1,38 +1,32 @@
 package J06006;
 
+/**
+ * Bill
+ */
 public class Bill implements Comparable<Bill> {
-    private String id;
+
     private Guest g;
-    private Items it;
-    private int quantity,price,profit;
-    
-    public Bill(int id, Guest g, Items it, int quantity) {
-        this.id = "HD" + String.format("%03d",id);
-        this.g = g;
-        this.it = it;
-        this.quantity = quantity;
-        this.setPrice();
-        this.setProfit();
-    }
+    private Items i;
+    private String id;
+    private int quantity,ln,price;
 
-    private void setPrice(){
-        this.price=this.quantity*this.it.getSell();
-    }
-
-    private void setProfit(){
-        this.profit=this.quantity*(this.it.getSell()-this.it.getBuy());
+    public Bill(int id,Guest g,Items i,int quantity){
+        this.id=String.format("HD%03d", id);
+        this.g=g;
+        this.i=i;
+        this.quantity=quantity;
+        this.price=this.i.getSell()*quantity;
+        this.ln=(this.i.getSell()-this.i.getBuy())*quantity;
     }
 
     @Override
     public String toString() {
-        return id + " " + g.getName() + " " + g.getAdd() + " " + it.getName() + " " + quantity + " " + price + " " + profit;
+        return id+" "+g.getName()+" "+g.getAdd()+" "+i.getName()+" "+quantity+" "+price+" "+ln;
     }
 
     public int compareTo(Bill b){
-        if(this.profit< b.profit) return 1;
-        else if(this.profit>b.profit) return -1;
-        return this.id.compareTo(b.id);
+        if(this.ln==b.ln) return this.id.compareTo(b.id);
+        return -Integer.valueOf(this.ln).compareTo(Integer.valueOf(b.ln));
     }
-    
-    
+
 }

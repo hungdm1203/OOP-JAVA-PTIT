@@ -6,22 +6,24 @@ import java.io.*;
  */
 public class J07030 {
     public static void main(String[] args) throws Exception {
-        ObjectInputStream in=new ObjectInputStream(new FileInputStream("DATA1.in"));
-        ObjectInputStream ip=new ObjectInputStream(new FileInputStream("DATA2.in"));
-        ArrayList<Integer> arr1= (ArrayList<Integer>) in.readObject(), arr2=(ArrayList<Integer>) ip.readObject();
-        TreeSet<Integer> s1=new TreeSet<>(), s2=new TreeSet<>();
-        for (Integer i : arr1) {
-            if(isPrime(i)) s1.add(i);
+        ObjectInputStream in1=new ObjectInputStream(new FileInputStream("DATA1.in"));
+        ObjectInputStream in2=new ObjectInputStream(new FileInputStream("DATA2.in"));
+        ArrayList<Integer> a1=(ArrayList<Integer>)in1.readObject(), a2=(ArrayList<Integer>)in2.readObject();
+        int a[]=new int[1000001], b[]=new int[1000001];
+        for (Integer i : a1) {
+            a[i]++;
         }
-        for (Integer i : arr2) {
-            if(isPrime(i)) s2.add(i);
+        for (Integer i : a2) {
+            b[i]++;
         }
-        for (Integer i : s1) {
-            if(s2.contains(1000000-i) && i<1000000-i) System.out.println(i+" "+(1000000-i));
+        for(int i=0;i<1000001;i++){
+            if(a[i]>0 && b[1000000-i]>0 && i<1000000-i && check(i) && check(1000000-i)){
+                System.out.println(i+" "+(1000000-i));
+            }
         }
     }
 
-    public static boolean isPrime(int n){
+    public static boolean check(int n){
         if(n<2) return false;
         for(int i=2;i<=Math.sqrt(n);i++){
             if(n%i==0) return false;

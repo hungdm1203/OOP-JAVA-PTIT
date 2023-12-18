@@ -22,10 +22,9 @@ public class KhachHang implements Comparable<KhachHang> {
     public String setName(String name){
         String str[]=name.toUpperCase().split("\\s+"), res="";
         for (int i = 0; i < str.length; i++) {
-            if(i!=str.length-1) res=res+str[i].substring(0, 1)+str[i].substring(1).toLowerCase()+" ";
-            else res=res+str[i].substring(0, 1)+str[i].substring(1).toLowerCase();
+            res=res+str[i].substring(0, 1)+str[i].substring(1).toLowerCase()+" ";
         }
-        return res;
+        return res.trim();
     }
 
     public long setTime(String start,String end){

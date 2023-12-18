@@ -10,31 +10,32 @@ public class Main {
         Scanner scanner=new Scanner(System.in);
         int t=scanner.nextInt();
         ArrayList<HocSinh> ds=new ArrayList<>();
-        ArrayList<Double> res= new ArrayList<>();
+        ArrayList<HocSinh> res= new ArrayList<>();
         for(int i=1;i<=t;i++){
             scanner.nextLine();
             String name=scanner.nextLine();
             double score=scanner.nextDouble();
-            ds.add(new HocSinh(i,name,score));
-            res.add(score);
+            HocSinh h=new HocSinh(i,name,score);
+            ds.add(h);
+            res.add(h);
         }
 
-        Collections.sort(res);
-        int tmp[]=new int[t+1], dem=1;
-        tmp[t-1]=1;
-        for (int i = t-2; i >=0; i--) {
-            if(res.get(i).equals(res.get(i+1))){
-                tmp[i]=tmp[i+1];
-                dem++;
+        Collections.sort(ds);
+        HocSinh h=ds.get(0);
+        int dem=1;
+        h.setRank(1);
+        for (HocSinh hocSinh : ds) {
+            if (h.getScore()==hocSinh.getScore()) {
+                hocSinh.setRank(h.getRank());
             } else{
-                dem++;                                  //5.9 9.2 9.2 9.5
-                tmp[i]=dem;                             //        2   1
+                hocSinh.setRank(dem);
+                h=hocSinh;
             }
+            dem++;
         }
 
-        for (HocSinh i : ds) {
-            int x=res.indexOf(i.getScore());
-            System.out.println(i+" "+tmp[x]);
+        for (HocSinh hocSinh : res) {
+            System.out.println(hocSinh);
         }
 
         scanner.close();

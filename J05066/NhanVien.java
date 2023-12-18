@@ -1,10 +1,9 @@
 package J05066;
 
 public class NhanVien implements Comparable<NhanVien> {
-    private String id,name,position,number,step;
+    private String name,position,number,step;
 
     public NhanVien(String id, String name) {
-        this.id=id;
         this.name = name;
         this.position = id.substring(0, 2);
         this.number = id.substring(4);

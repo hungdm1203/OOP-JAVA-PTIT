@@ -15,18 +15,17 @@ public class Main {
             ds.add(new SinhVien(i, scanner.nextLine().trim(), Double.valueOf(scanner.nextLine().trim()), Double.valueOf(scanner.nextLine().trim()), Double.valueOf(scanner.nextLine().trim())));
         }
         Collections.sort(ds);
-        double tmp=0;
-        int a[]=new int[t];
-        a[0]=1;
-        for (int i=0;i<t;i++) {
-            if(ds.get(i).getTb()!=tmp){
-                tmp=ds.get(i).getTb();
-                System.out.println(ds.get(i)+" "+(i+1));
-                a[i]=i+1;
+        SinhVien sv=ds.get(0);
+        int dem=1;
+        for (SinhVien sinhVien : ds) {
+            if (sv.getScore()==sinhVien.getScore()) {
+                sinhVien.setRank(sv.getRank());
             } else{
-                a[i]=a[i-1];
-                System.out.println(ds.get(i)+" "+a[i]);
+                sv=sinhVien;
+                sinhVien.setRank(dem);
             }
+            dem++;
+            System.out.println(sinhVien);
         }
     }
 }

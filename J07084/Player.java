@@ -5,41 +5,41 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
 public class Player implements Comparable<Player> {
-    private String name,datein,dateout,timein,timeout;
+    private String name,din,dout,tin,tout;
     private long time;
 
-    public Player(String name, String datein, String dateout, String timein, String timeout) {
-        this.name = name;
-        this.datein = datein;
-        this.dateout = dateout;
-        this.timein = timein;
-        this.timeout = timeout;
-        this.setTime();;
+    public Player(String name, String in,String out){
+        this.name=name;
+        String a[]=in.split("\\s+"), b[]=out.split("\\s+");
+        this.din=a[0];
+        this.dout=b[0];
+        this.tin=a[1];
+        this.tout=b[1];
+        this.setTime();
     }
 
     public void setTime(){
-        String din[]=this.datein.split("/");
-        String dout[]=this.dateout.split("/");
-        LocalDate d1=LocalDate.of(Integer.valueOf(din[2]), Integer.valueOf(din[1]), Integer.valueOf(din[0]));
-        LocalDate d2=LocalDate.of(Integer.valueOf(dout[2]), Integer.valueOf(dout[1]), Integer.valueOf(dout[0]));
-        long d=ChronoUnit.DAYS.between(d1, d2);
-
-        String tin[]=this.timein.split(":");
-        String tout[]=this.timeout.split(":");
-        LocalTime t1=LocalTime.of(Integer.valueOf(tin[0]), Integer.valueOf(tin[1]), Integer.valueOf(tin[2]));
-        LocalTime t2=LocalTime.of(Integer.valueOf(tout[0]), Integer.valueOf(tout[1]), Integer.valueOf(tout[2]));
-        long t=ChronoUnit.MINUTES.between(t1, t2);
-        // long t=Integer.valueOf(tout[0])*60-60*Integer.valueOf(tin[0])+Integer.valueOf(tout[1])-Integer.valueOf(tin[1]);
-        this.time=t+d*60*24;
+        String a[]=this.din.split("/"), b[]=this.dout.split("/");
+        LocalDate i=LocalDate.of(Integer.valueOf(a[2]), Integer.valueOf(a[1]), Integer.valueOf(a[0]));
+        LocalDate o=LocalDate.of(Integer.valueOf(b[2]), Integer.valueOf(b[1]), Integer.valueOf(b[0]));
+        long d=ChronoUnit.DAYS.between(i, o);
+        String x[]=this.tin.split(":"),y[]=this.tout.split(":");
+        LocalTime t1=LocalTime.of(Integer.valueOf(x[0]), Integer.valueOf(x[1]), Integer.valueOf(x[2]));
+        LocalTime t2=LocalTime.of(Integer.valueOf(y[0]), Integer.valueOf(y[1]), Integer.valueOf(y[2]));
+        this.time=d*60*24+ChronoUnit.MINUTES.between(t1, t2);
     }
 
     public int compareTo(Player p){
-        if(this.time<p.time) return 1;
-        else if(this.time>p.time) return -1;
-        return this.name.compareTo(p.name);
+        if (this.time==p.time) {
+            return this.name.compareTo(p.name);
+        }
+        return -Long.valueOf(this.time).compareTo(Long.valueOf(p.time));
     }
 
-    public String toString(){
-        return name+" "+time;
+    @Override
+    public String toString() {
+        return name + " " + time;
     }
+
+
 }

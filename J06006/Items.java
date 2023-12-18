@@ -1,13 +1,17 @@
 package J06006;
 
+/**
+ * Items
+ */
 public class Items {
-    private String id,name,unit;
+
+    private String id,name,type;
     private int buy,sell;
 
-    public Items(int id, String name, String unit, int buy, int sell) {
-        this.id = "MH" + String.format("%03d",id);
+    public Items(int id, String name, String type, int buy, int sell) {
+        this.id = String.format("MH%03d", id);
         this.name = name;
-        this.unit = unit;
+        this.type = type;
         this.buy = buy;
         this.sell = sell;
     }
@@ -23,5 +27,7 @@ public class Items {
     public int getSell() {
         return sell;
     }
+
+    
     
 }

@@ -2,7 +2,7 @@ package J05056;
 
 public class VanDongVien implements Comparable<VanDongVien> {
     private String id,name,start,end;
-    private int age,time,thanhTich,uuTien;
+    private int age,time,thanhTich,uuTien,rank;
 
 
     public VanDongVien(int id, String name, String start, String end, int age, int time) {
@@ -40,10 +40,13 @@ public class VanDongVien implements Comparable<VanDongVien> {
         return thanhTich;
     }
 
+    public void setRank(int n){
+        this.rank=n;
+    }
 
     @Override
     public String toString() {
-        return id + " " + name + " " + this.getString(time) + " " + this.getString(uuTien) + " "+ this.getString(thanhTich);
+        return id + " " + name + " " + this.getString(time) + " " + this.getString(uuTien) + " "+ this.getString(thanhTich)+" "+rank;
     }
 
 
@@ -51,11 +54,9 @@ public class VanDongVien implements Comparable<VanDongVien> {
         return Integer.valueOf(this.thanhTich).compareTo(Integer.valueOf(v.thanhTich));
     }
 
-
-
-
-
-
+    public int getRank(){
+        return rank;
+    }
 
     public String getStart() {
         return start;

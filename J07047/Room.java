@@ -5,12 +5,11 @@ public class Room {
     private long donGia;
     private double phi;
 
-    public Room(String s){
-        String str[]=s.trim().split("\\s+");
-        this.loai=str[0];
-        this.rName=str[1];
-        this.donGia=Integer.valueOf(str[2]);
-        this.phi=Double.valueOf(str[3]);
+    public Room(String s0,String s1,String s2,String s3){
+        this.loai=s0;
+        this.rName=s1;
+        this.donGia=Long.valueOf(s2);
+        this.phi=Double.valueOf(s3);
     }
 
     public String getLoai() {
@@ -25,6 +24,8 @@ public class Room {
         return phi;
     }
 
-    
+    public String getRname(){
+        return rName;
+    }    
     
 }
